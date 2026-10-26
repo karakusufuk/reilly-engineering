@@ -17,3 +17,17 @@
 
 /* ---------- additions for the built site ---------- */
 .ph-wide.wide-21 { aspect-ratio: 21 / 9; }
+
+/* the founder photo stays pinned 10px under the header while the story and the timeline scroll beside it; the wide photo below pushes it up */
+.aflow { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 64px; align-items: start; padding-block: 56px 72px; }
+.apin { align-self: stretch; }
+.apin-in { position: sticky; top: calc(var(--hdr) + 11px); width: min(100%, 400px, calc((100vh - var(--hdr) - 34px) * 2 / 3)); }
+.acol h1 { font-weight: 700; font-size: clamp(40px, 4.4vw, 64px); line-height: 1.02; }
+.acol p { font-size: 18px; margin: 18px 0 0; max-width: 46ch; }
+.atl { margin-top: 80px; }
+.atl .tl div { padding-block: 30px; }
+.atl .tl span, .atl .tl b { font-size: 20px; }
+.atl .tl div { grid-template-columns: minmax(0, 1fr) 96px; gap: 24px; }
+.atl .tl b { order: 2; text-align: right; }
+.atl .tl span { order: 1; text-align: right; }
+@media (max-width: 860px) { .aflow { grid-template-columns: minmax(0, 1fr); gap: 32px; } .apin-in { position: static; width: min(100%, 460px); } .atl .tl div { grid-template-columns: 96px minmax(0, 1fr); gap: 20px; } .atl .tl b { order: 0; text-align: left; } .atl .tl span { order: 0; text-align: left; } }

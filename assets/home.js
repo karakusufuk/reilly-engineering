@@ -11,18 +11,25 @@
 
   /* ---------- strip ---------- */
   var strip = document.getElementById("stripEl"), mn = document.getElementById("mn"), lbot = document.getElementById("lbot");
-  var specEl = document.getElementById("spec"), partsEl = document.getElementById("parts");
+  var specEl = document.getElementById("spec"), partsEl = document.getElementById("parts"), whyEl = document.getElementById("why");
   var mode = "machine", data = MACH, slots = Array.prototype.slice.call(strip.querySelectorAll(".slot")), N = 7;
   var pos = 1, target = 1, state = "idle", v = 0, lastIdx = null, first = true, dirty = true;
   function mod(a, n) { return ((a % n) + n) % n; }
   function dims() { var card = slots[0].offsetWidth; return { card: card, gap: parseFloat(getComputedStyle(strip).getPropertyValue("--gap")) || 76, w: strip.clientWidth }; }
-  function file(item) { return mode === "machine" ? item.img : item.hero; }
+  function file(item) { return mode === "machine" ? "cut-" + item.slug + ".webp" : item.hero; }
   function setSlot(el, item) {
     var p = el.firstChild, f = file(item), src = p.querySelectorAll("source");
-    /* below 860 px machine photos come in a 640 px file as well; part photos are one size */
-    src[0].srcset = mode === "machine" ? IMG + f.replace(".jpg", "-640.webp") + " 640w, " + IMG + webp(f) + " 1100w" : IMG + webp(f);
-    src[1].srcset = IMG + webp(f);
-    p.lastChild.src = IMG + f;
+    if (mode === "machine") {
+      var b = IMG + "cut-" + item.slug;
+      src[0].srcset = b + "-640.webp 640w, " + b + "-1000.webp 1000w, " + b + ".webp 1600w";
+      src[0].sizes = "(max-width: 860px) 90vw, 820px";
+      src[1].srcset = b + ".webp";
+      p.lastChild.src = b + ".webp";
+    } else {
+      src[0].removeAttribute("sizes"); src[0].srcset = IMG + webp(f);
+      src[1].srcset = IMG + webp(f);
+      p.lastChild.src = IMG + f;
+    }
     p.lastChild.alt = mode === "machine" ? item.brand + " " + item.model : item.name;
   }
   function draw() {
@@ -32,9 +39,6 @@
       if (el.dataset.key !== key) { el.dataset.key = key; setSlot(el, item); }
       var rel = i - pos;
       el.style.transform = "translateX(" + (cx + rel * step - dm.card / 2).toFixed(1) + "px)";
-      /* window parallax: the photo lags behind its card, so side cards show a cut, the centre shows it whole */
-      var sh = Math.max(-1, Math.min(1, rel)) * -0.06 * dm.card;
-      img.style.transform = "translateX(" + sh.toFixed(1) + "px)";
       el.classList.toggle("side", i !== c);
       el.dataset.rel = i - c;
     }
@@ -49,16 +53,27 @@
       if (mode === "machine") {
         mn.innerHTML = m.brand + " " + m.model + " <span>· " + m.type + "</span>";
         specEl.innerHTML = m.key.join("<i>·</i>");
+        whyEl.textContent = m.why || ""; whyEl.hidden = !m.why;
         partsEl.innerHTML = m.parts.map(function (p) { return '<a class="part" href="/parts/' + p[2] + '/">' + pic(p[1], /png$/.test(p[1]) ? "png" : "", "", 92) + "<span>" + p[0] + "</span></a>"; }).join("");
       } else {
         mn.innerHTML = m.name;
         specEl.innerHTML = [m.size, m.tol, m.mat].join("<i>·</i>");
+        whyEl.textContent = ""; whyEl.hidden = true;
         partsEl.innerHTML = '<div class="made"><b>Made on</b>' + m.made.map(function (s) { var x = RE.bySlug(s); return '<a href="/machines/' + s + '/">' + x.brand + " " + x.model + "</a>"; }).join("") + "</div>";
       }
       mn.classList.remove("out"); lbot.classList.remove("out");
     }, first ? 0 : 200);
     first = false;
   }
+  /* the floor starts where the machines' bases are about half-way down the floor: measured from the strip, so every screen shape keeps the same room */
+  var heroEl = document.getElementById("hero"), roomEl = heroEl.querySelector(".room");
+  function layoutRoom() {
+    var hr = heroEl.getBoundingClientRect(), sr = strip.getBoundingClientRect();
+    roomEl.style.setProperty("--hy", Math.round(sr.top - hr.top + sr.height * 0.50) + "px");
+  }
+  addEventListener("resize", function () { layoutRoom(); dirty = true; });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutRoom);
+  layoutRoom();
   var last = performance.now();
   function tick(now) {
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
@@ -121,6 +136,8 @@
   RE_switch(document.getElementById("sw"), function (right) {
     var m = right ? "part" : "machine"; if (m === mode) return;
     mode = m; data = right ? FAM : MACH;
+    strip.classList.toggle("m", !right); strip.classList.toggle("p", right);
+    slots.forEach(function (el) { el.dataset.key = ""; });
     pos = Math.round(pos); target = pos; state = "idle"; lastIdx = null; draw();
   });
   strip.classList.add("ready");

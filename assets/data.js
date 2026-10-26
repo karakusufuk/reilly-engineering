@@ -7,7 +7,7 @@ window.RE = {
 
   machines: [
     {
-      slug: "aldner-vx-850", sectors: ["Hydraulics", "Automotive", "Mould-making", "General engineering"], brand: "Aldner", model: "VX-850", group: "Milling", type: "3-axis milling centre",
+      slug: "aldner-vx-850", why: "Why these parts: flat-faced blocks and plates, milled, bored and pocketed on three axes.", sectors: ["Hydraulics", "Automotive", "Mould-making", "General engineering"], brand: "Aldner", model: "VX-850", group: "Milling", type: "3-axis milling centre",
       img: "aldner-vx-850.jpg", price: "€96,000", key: ["3 axes", "850 × 500 × 510 mm", "±3 µm"],
       intro: "The machine most shops start with. A rigid, honest vertical mill for housings, plates and brackets, with room to grow into a fourth axis or robot loading later.",
       specs: [["Travel X / Y / Z", "850 × 500 × 510 mm"], ["Table", "1,000 × 500 mm, 500 kg"], ["Spindle", "12,000 rpm, 18.5 kW, BT40"], ["Tools", "24"], ["Rapid traverse", "36 m/min"], ["Accuracy", "±3 µm"], ["Control", "Aldner Pilot"], ["Footprint", "2.4 × 2.3 m"], ["Weight", "5,200 kg"]],
@@ -19,7 +19,7 @@ window.RE = {
       planFrom: [1450, 3200, 6900]
     },
     {
-      slug: "aldner-rx-5", sectors: ["Medical", "Aerospace", "Mould-making"], brand: "Aldner", model: "RX-5", group: "Milling", type: "5-axis milling centre",
+      slug: "aldner-rx-5", why: "Why these parts: freeform shapes, where five axes reach every face in one clamping.", sectors: ["Medical", "Aerospace", "Mould-making"], brand: "Aldner", model: "RX-5", group: "Milling", type: "5-axis milling centre",
       img: "aldner-rx-5.jpg", price: "€310,000", key: ["5 axes", "650 × 520 × 475 mm", "±2 µm"],
       intro: "Five axes on a tilting trunnion for the parts that cannot be clamped twice: hip stems, turbine blades and deep mould cores, finished in one setup.",
       specs: [["Travel X / Y / Z", "650 × 520 × 475 mm"], ["Rotary axes", "B ±120°, C 360°"], ["Table", "Ø 500 mm, 250 kg"], ["Spindle", "20,000 rpm, 25 kW, HSK-A63"], ["Tools", "60"], ["Rapid traverse", "50 m/min"], ["Accuracy", "±2 µm"], ["Control", "Aldner Pilot 5X"], ["Footprint", "3.1 × 3.4 m"], ["Weight", "9,800 kg"]],
@@ -31,7 +31,7 @@ window.RE = {
       planFrom: [2400, 4900, 9800]
     },
     {
-      slug: "hoshida-tl-42", sectors: ["Hydraulics", "Automotive", "Energy"], brand: "Hoshida", model: "TL-42", group: "Turning", type: "CNC lathe",
+      slug: "hoshida-tl-42", why: "Why these parts: round work, where shafts, flanges and fittings are turned on one centre line.", sectors: ["Hydraulics", "Automotive", "Energy"], brand: "Hoshida", model: "TL-42", group: "Turning", type: "CNC lathe",
       img: "hoshida-tl-42.jpg", price: "€118,000", key: ["Ø 420 mm swing", "4,500 rpm", "±3 µm"],
       intro: "A slant-bed lathe built for shafts, flanges and fittings, day after day. Add a Y-axis and live tools and it mills the flats and cross holes too.",
       specs: [["Swing", "Ø 420 mm"], ["Max turning", "Ø 350 × 600 mm"], ["Chuck", "10 inch"], ["Bar capacity", "Ø 65 mm"], ["Spindle", "4,500 rpm, 22 kW"], ["Turret", "12 stations"], ["Accuracy", "±3 µm"], ["Control", "Hoshida HX"], ["Footprint", "3.2 × 1.9 m"], ["Weight", "5,600 kg"]],
@@ -43,7 +43,7 @@ window.RE = {
       planFrom: [1450, 3200, 6900]
     },
     {
-      slug: "hoshida-sw-20", sectors: ["Medical", "Dental", "Electronics"], brand: "Hoshida", model: "SW-20", group: "Turning", type: "Swiss-type lathe",
+      slug: "hoshida-sw-20", why: "Why these parts: small, slender bar work, held right at the cut so it stays straight.", sectors: ["Medical", "Dental", "Electronics"], brand: "Hoshida", model: "SW-20", group: "Turning", type: "Swiss-type lathe",
       img: "hoshida-sw-20.jpg", price: "€265,000", key: ["Ø 20 mm bar", "10,000 rpm", "±1 µm"],
       intro: "The machine behind most bone screws and dental implants. The bar slides through a guide bushing, so long slender parts are cut right next to the support and stay true to a micron.",
       specs: [["Bar capacity", "Ø 20 mm"], ["Headstock stroke", "205 mm"], ["Main and sub spindle", "10,000 rpm"], ["Tools", "33 (12 driven)"], ["Accuracy", "±1 µm"], ["Bar feeder", "3.2 m, included"], ["Control", "Hoshida HX"], ["Footprint", "2.3 × 1.3 m plus feeder"], ["Weight", "2,900 kg"]],
@@ -55,7 +55,7 @@ window.RE = {
       planFrom: [1900, 4100, 8200]
     },
     {
-      slug: "aldner-mt-400", sectors: ["Hydraulics", "Automotive", "Medical", "Aerospace"], brand: "Aldner", model: "MT-400", group: "Special", type: "Mill-turn centre",
+      slug: "aldner-mt-400", why: "Why these parts: each one needs turning and milling, round bodies with milled ports, teeth or flats, finished in one setup.", sectors: ["Hydraulics", "Automotive", "Medical", "Aerospace"], brand: "Aldner", model: "MT-400", group: "Special", type: "Mill-turn centre",
       img: "aldner-mt-400.jpg", price: "€420,000", key: ["Ø 400 × 1,000 mm", "12,000 rpm", "±2 µm"],
       intro: "Two spindles and a milling head on a B-axis, so a part goes in as bar and comes out finished on every face. One machine, one setup, one operator.",
       specs: [["Max turning", "Ø 400 × 1,000 mm"], ["Main and sub spindle", "4,000 rpm"], ["Milling spindle", "B-axis, 12,000 rpm, 22 kW, HSK-A63"], ["Tools", "80"], ["Accuracy", "±2 µm"], ["Control", "Aldner Pilot MT"], ["Footprint", "4.6 × 2.8 m"], ["Weight", "14,500 kg"]],
@@ -67,7 +67,7 @@ window.RE = {
       planFrom: [2900, 5800, 11400]
     },
     {
-      slug: "hoshida-ew-60", sectors: ["Tool and die", "Automotive", "Electronics"], brand: "Hoshida", model: "EW-60", group: "Special", type: "Wire EDM",
+      slug: "hoshida-ew-60", why: "Why these parts: hardened steel with sharp inside corners, cut by wire spark after heat treatment.", sectors: ["Tool and die", "Automotive", "Electronics"], brand: "Hoshida", model: "EW-60", group: "Special", type: "Wire EDM",
       img: "hoshida-ew-60.jpg", price: "€178,000", key: ["600 × 400 × 350 mm", "Ø 0.1–0.3 mm wire", "±1.5 µm"],
       intro: "A thin brass wire and a spark, cutting hardened steel no cutter can touch. For punch dies, extrusion dies and fine gears with sharp inside corners.",
       specs: [["Travel X / Y / Z", "600 × 400 × 350 mm"], ["U / V", "80 mm"], ["Max workpiece", "1,050 × 750 × 345 mm, 800 kg"], ["Wire", "Ø 0.1–0.3 mm"], ["Taper", "±30° over 80 mm"], ["Surface finish", "Ra 0.12 µm"], ["Accuracy", "±1.5 µm"], ["Control", "Hoshida HX-E"], ["Footprint", "2.9 × 2.7 m"], ["Weight", "3,900 kg"]],
