@@ -1,0 +1,30 @@
+.jump { display: flex; gap: 32px; padding-block: 0 24px; border-bottom: 1px solid var(--steel-3); }
+.jump a { font-weight: 500; }
+.jump a:hover { color: var(--re-blue); }
+.svc { display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); gap: 56px; align-items: start; padding-block: 64px; border-bottom: 1px solid var(--steel-3); scroll-margin-top: var(--hdr); }
+.svc.flip { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); }
+.svc.flip .media { order: 2; }
+.svc h2 { font-weight: 700; font-size: clamp(30px, 2.8vw, 40px); line-height: 1.05; }
+.svc .lead { font-size: 18px; margin: 14px 0 28px; max-width: 48ch; }
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.plans div { border-top: 2px solid var(--re-dark); padding-top: 14px; }
+.plans b { font-family: var(--display); font-weight: 700; font-size: 22px; }
+.plans p { margin: 8px 0 0; color: var(--ink-soft); }
+.plans .mono { display: block; margin-top: 12px; }
+.svc .more { display: inline-block; margin-top: 28px; font-weight: 500; color: var(--re-blue); background: none; border: 0; padding: 0; font-size: 16px; cursor: pointer; }
+.big { font-family: var(--display); font-weight: 700; font-size: clamp(48px, 6vw, 88px); line-height: 1; font-variant-numeric: tabular-nums; display: inline-block; margin-top: 8px; }
+.big:hover { color: var(--re-blue); }
+.mtabs { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 18px; }
+.mtabs button { font: 500 14px var(--body); color: var(--ink-soft); background: none; border: 0; padding: 0; cursor: pointer; }
+.mtabs button.on { color: var(--re-blue); font-weight: 600; }
+.row.sp { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.2fr) auto auto; }
+.row.opt { grid-template-columns: minmax(0, 1.3fr) minmax(0, 2fr) auto; }
+@media (max-width: 860px) { .svc, .svc.flip { grid-template-columns: minmax(0, 1fr); } .svc.flip .media { order: 0; } .plans { grid-template-columns: minmax(0, 1fr); } .row.sp, .row.opt { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- additions for the built site ---------- */
+/* all six parts lists share one grid cell, so the finder keeps the height of the longest */
+.sparewrap { display: grid; }
+.sparewrap > .rows { grid-area: 1 / 1; visibility: hidden; }
+.sparewrap > .rows.on { visibility: visible; }
+.svc.last { border-bottom: 0; padding-bottom: 96px; }
+@media (max-width: 860px) { .jump { flex-wrap: wrap; gap: 8px 24px; } }

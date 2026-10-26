@@ -1,0 +1,17 @@
+.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.three b { display: block; margin-top: 12px; font-family: var(--display); font-weight: 600; font-size: 20px; }
+.three span { color: var(--ink-soft); font-size: 15px; }
+.vals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding-block: 36px; border-top: 1px solid var(--steel-3); border-bottom: 1px solid var(--steel-3); margin-top: 48px; }
+.vals span { display: block; color: var(--ink-soft); font-size: 15px; }
+.vals b { font-family: var(--mono); font-weight: 500; font-size: 20px; }
+.madeon { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; max-width: 860px; }
+.madeon a { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 20px; align-items: center; }
+.madeon b { font-family: var(--display); font-weight: 600; font-size: 22px; display: block; }
+.madeon span { color: var(--ink-soft); display: block; }
+.madeon .go { display: inline-block; margin-top: 10px; }
+.madeon a:hover .go { color: var(--re-blue); }
+.send { display: flex; justify-content: space-between; align-items: end; gap: 32px; padding-block: 48px 88px; border-top: 1px solid var(--steel-3); }
+.send p { margin: 0; font-size: 22px; max-width: 30ch; line-height: 1.35; }
+.send a { font-family: var(--mono); font-size: 24px; font-weight: 500; }
+.send a:hover { color: var(--re-blue); }
+@media (max-width: 860px) { .three, .vals, .madeon { grid-template-columns: minmax(0, 1fr); } .send { flex-direction: column; align-items: flex-start; } }

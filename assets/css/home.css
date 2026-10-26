@@ -1,0 +1,117 @@
+/* ---------- hero: machine strip ---------- */
+.hero { padding-block: 22px 56px; }
+.hero-top { display: flex; justify-content: space-between; align-items: center; gap: 24px; min-height: 44px; }
+.mname { font-weight: 600; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.15; }
+.mname span { color: var(--ink-soft); font-weight: 500; }
+.fade { transition: opacity 200ms ease; }
+.fade.out { opacity: 0; }
+.strip { --card: clamp(300px, min(38vw, calc(100vh - 410px)), 520px); --gap: 76px; position: relative; width: 100%; height: var(--card); margin-top: 18px; overflow: hidden; user-select: none; }
+.slot { position: absolute; top: 0; left: 0; width: var(--card); height: var(--card); border-radius: var(--r); overflow: hidden; background: var(--steel-2); will-change: transform; cursor: pointer; }
+.slot img { position: absolute; top: 0; left: -6%; width: 112%; max-width: none; height: 100%; object-fit: cover; will-change: transform; pointer-events: none; }
+.slot.side { filter: saturate(0.6); opacity: 0.8; transition: filter 300ms ease, opacity 300ms ease; }
+.specline { text-align: center; font-family: var(--mono); font-size: 15px; margin-top: 18px; font-variant-numeric: tabular-nums; min-height: 1.6em; }
+.specline i { font-style: normal; color: var(--ink-soft); padding: 0 12px; }
+.parts { display: flex; justify-content: center; gap: 40px; margin-top: 16px; min-height: 120px; }
+.part { width: 92px; text-align: center; }
+.part img { width: 92px; height: 92px; border-radius: var(--r); object-fit: cover; background: var(--steel-2); }
+.part img.png { object-fit: contain; padding: 9px; }
+.part span { display: block; font-size: 12px; margin-top: 6px; color: var(--ink-soft); line-height: 1.3; }
+.made { text-align: center; }
+.made b { display: block; font-weight: 500; font-size: 13px; color: var(--ink-soft); }
+.made a { font-family: var(--display); font-weight: 600; font-size: 19px; margin: 4px 14px 0; display: inline-block; }
+.made a:hover { color: var(--re-blue); }
+
+/* ---------- after the machine: checkerboard ---------- */
+.after { --w: min(300px, calc((100vh - 300px) / 2), calc((100vw - 32px) / 4)); padding-block: 56px 96px; }
+.after .in-w { width: calc(var(--w) * 4); max-width: 100%; margin: 0 auto; }
+.after-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 26px; }
+.after-head h2 { font-weight: 700; font-size: clamp(30px, 2.8vw, 42px); line-height: 1.05; }
+.after-head p { margin: 0; color: var(--ink-soft); max-width: 34ch; text-align: right; }
+.board { position: relative; display: grid; grid-template-columns: repeat(4, var(--w)); height: calc(var(--w) * 2); border-radius: var(--r); overflow: hidden; }
+.col { position: relative; height: 100%; }
+.tile { position: absolute; inset: 0; background: var(--graphite-2); transition: clip-path 750ms var(--ease); }
+.col.top .tile { clip-path: inset(0 0 50% 0); }
+.col.bot .tile { clip-path: inset(50% 0 0 0); }
+.col:hover .tile, .col:focus-within .tile { clip-path: inset(0 0 0 0); }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 750ms var(--ease), opacity 750ms var(--ease); }
+.col.top .tile img { transform: translateY(-25%); }
+.col.bot .tile img { transform: translateY(25%); }
+.col:hover .tile img, .col:focus-within .tile img { transform: none; opacity: 0.16; }
+.tile::before { content: ""; position: absolute; left: 0; right: 0; height: 50%; z-index: 1; background: linear-gradient(180deg, rgba(14,17,20,0.6), rgba(14,17,20,0) 70%); transition: top 750ms var(--ease), opacity 400ms ease; }
+.col.top .tile::before { top: 0; }
+.col.bot .tile::before { top: 50%; }
+.col:hover .tile::before, .col:focus-within .tile::before { top: 0; opacity: 0; }
+.tx { position: absolute; left: 22px; right: 22px; z-index: 2; color: var(--white); transition: top 750ms var(--ease); }
+.col.top .tx { top: 20px; }
+.col.bot .tx { top: calc(50% + 20px); }
+.col:hover .tx, .col:focus-within .tx { top: 20px; }
+.tx h3 { font-weight: 700; font-size: 24px; line-height: 1.1; }
+.tx .desc { opacity: 0; transition: opacity 450ms ease; }
+.col:hover .desc, .col:focus-within .desc { opacity: 1; transition-delay: 220ms; }
+.desc p { margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: #DCE2E6; }
+.desc ul { list-style: none; padding: 0; margin: 14px 0 0; font-family: var(--mono); font-size: 13px; color: #B9C3CA; }
+.desc li + li { margin-top: 4px; }
+.desc .go { color: var(--white); display: inline-block; margin-top: 16px; }
+.col a.cover { position: absolute; inset: 0; z-index: 3; }
+
+/* ---------- since 1998 ---------- */
+.since { position: relative; height: max(640px, 100vh); display: grid; place-items: center; background: var(--steel); isolation: isolate; overflow: hidden; }
+.br-in { height: 48vh; min-height: 300px; aspect-ratio: 3 / 4; border-radius: var(--r); overflow: hidden; background: var(--steel-2); opacity: 0; transform: translateY(44px); transition: opacity 1500ms var(--ease), transform 1500ms var(--ease); }
+.br-in img { width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 100%; transform: scale(1.35); filter: grayscale(1) sepia(0.25); transition: filter 3200ms ease 1100ms; }
+.since-p { position: absolute; left: 0; right: 0; --fs: clamp(44px, 6.6vw, 104px); top: calc(50% + 24vh - var(--fs) * 0.8); mix-blend-mode: difference; will-change: transform; }
+.since-t { margin: 0; text-align: center; white-space: nowrap; color: #FFFFFF;
+  font-family: var(--display); font-weight: 700; font-size: var(--fs); letter-spacing: 0.035em; line-height: 1.02;
+  opacity: 0; transform: translateY(70px); transition: opacity 2400ms var(--ease) 1000ms, transform 2400ms var(--ease) 1000ms; }
+.since.in .br-in { opacity: 1; transform: none; }
+.since.in .br-in img { filter: none; }
+.since.in .since-t { opacity: 1; transform: none; }
+
+/* ---------- implant ---------- */
+.implant { height: 380vh; position: relative; background: #15191C; color: var(--white); }
+.implant .stick { position: sticky; top: var(--hdr); height: calc(100vh - var(--hdr)); overflow: hidden;
+  background: radial-gradient(ellipse 55% 70% at 62% 42%, #4A5157 0%, #2A3035 42%, #15191C 100%); display: flex; align-items: center; }
+.imp-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 32px; align-items: center; }
+.imp-copy h2 { font-weight: 600; font-size: clamp(34px, 3.8vw, 56px); line-height: 1.05; max-width: 12ch; }
+.segs { display: flex; gap: 4px; margin-top: 44px; width: 240px; }
+.segs span { flex: 1; height: 3px; background: #3A434A; position: relative; overflow: hidden; }
+.segs i { position: absolute; inset: 0; background: var(--re-blue); transform-origin: left; transform: scaleX(0); }
+.stage { display: flex; justify-content: center; }
+.stage svg { display: block; height: min(76vh, 760px); width: auto; max-width: 100%; }
+
+@media (max-width: 760px) {
+  .hero-top { flex-direction: column; align-items: flex-start; }
+  .after-head { flex-direction: column; align-items: flex-start; }
+  .after-head p { text-align: left; }
+  .imp-grid { grid-template-columns: minmax(0, 1fr); }
+  .since-t { white-space: normal; }
+}
+
+/* ---------- additions for the built site ---------- */
+.js .strip:not(.ready) { visibility: hidden; }
+.strip { touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+.mname span { white-space: nowrap; }
+/* touch screens: the first tap opens a tile (same state as hover), the second follows the link */
+.col.open .tile { clip-path: inset(0 0 0 0); }
+.col.open .tile img { transform: none; opacity: 0.16; }
+.col.open .tile::before { top: 0; opacity: 0; }
+.col.open .tx { top: 20px; }
+.col.open .desc { opacity: 1; transition-delay: 220ms; }
+
+/* ---------- small screens: nothing may break (no new design, just a layout that fits) ---------- */
+@media (max-width: 760px) {
+  /* the four tiles stack as full-width cards; a tap opens one (same open state as hover on desktop) */
+  .after { --w: min(300px, calc(100vw - 32px)); }
+  .after .in-w { width: 100%; }
+  .board { display: flex; flex-direction: column; gap: 8px; height: auto; border-radius: 0; overflow: visible; }
+  .col { height: 252px; border-radius: var(--r); overflow: hidden; }
+  .col.top .tile, .col.bot .tile { clip-path: inset(0 0 0 0); }
+  .col.top .tile img, .col.bot .tile img { transform: none; }
+  .col.top .tile::before, .col.bot .tile::before { top: 0; }
+  .col.top .tx, .col.bot .tx { top: 20px; }
+  .col.open .tile img { opacity: 0.16; }
+  .stage svg { height: min(56vh, 760px); }
+  .imp-copy h2 { max-width: none; }
+  .imp-grid { gap: 16px; }
+  .call { padding-block: 72px 64px; }
+  .since-p { --fs: clamp(26px, 7.6vw, 44px); }
+}

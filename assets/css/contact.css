@@ -1,0 +1,13 @@
+.cgrid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 56px; align-items: start; padding-block: 8px 96px; border-top: 1px solid var(--steel-3); padding-top: 56px; }
+.cgrid dl { margin: 0; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px 24px; }
+.cgrid dt { color: var(--ink-soft); }
+.cgrid dd { margin: 0; }
+.cgrid dd a { font-family: var(--mono); }
+.cgrid dd a:hover { color: var(--re-blue); }
+.cgrid h2 { font-weight: 700; font-size: 30px; margin-bottom: 20px; }
+.cgrid p { color: var(--ink-soft); margin: 28px 0 0; max-width: 42ch; }
+.cgrid .maps { display: inline-block; margin-top: 20px; font-weight: 500; color: var(--re-blue); background: none; border: 0; padding: 0; font-size: 16px; cursor: pointer; }
+@media (max-width: 860px) { .cgrid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- additions for the built site ---------- */
+.call.c-call { padding-block: 96px 88px; }

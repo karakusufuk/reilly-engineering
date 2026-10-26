@@ -1,0 +1,19 @@
+.ahero { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 64px; align-items: end; padding-block: 56px 64px; }
+.ahero .ph-tall { max-width: 460px; }
+.ahero h1 { font-weight: 700; font-size: clamp(40px, 4.4vw, 64px); line-height: 1.02; }
+.ahero p { font-size: 18px; margin: 18px 0 0; max-width: 46ch; }
+.tl { border-top: 1px solid var(--steel-3); }
+.tl div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 32px; padding-block: 16px; border-bottom: 1px solid var(--steel-3); }
+.tl b { font-family: var(--mono); font-weight: 500; font-size: 18px; }
+.tl span { font-size: 18px; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; }
+.two h3 { font-weight: 700; font-size: 28px; }
+.two p { margin: 10px 0 0; color: var(--ink-soft); max-width: 46ch; }
+.ext { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 40px; align-items: end; padding-block: 56px 96px; }
+.ext address { font-style: normal; font-size: 18px; line-height: 1.6; }
+.ext a { font-family: var(--mono); font-size: 22px; font-weight: 500; display: inline-block; margin-top: 12px; }
+.ext a:hover { color: var(--re-blue); }
+@media (max-width: 860px) { .ahero, .two, .ext { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- additions for the built site ---------- */
+.ph-wide.wide-21 { aspect-ratio: 21 / 9; }
