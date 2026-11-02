@@ -3,7 +3,7 @@
 .cgrid dt { color: var(--ink-soft); }
 .cgrid dd { margin: 0; }
 .cgrid dd a { font-family: var(--mono); }
-.cgrid dd a:hover { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .cgrid dd a:hover { color: var(--re-blue); } }
 .cgrid h2 { font-weight: 700; font-size: 30px; margin-bottom: 20px; }
 .cgrid p { color: var(--ink-soft); margin: 28px 0 0; max-width: 42ch; }
 .cgrid .maps { display: inline-block; margin-top: 20px; font-weight: 500; color: var(--re-blue); background: none; border: 0; padding: 0; font-size: 16px; cursor: pointer; }

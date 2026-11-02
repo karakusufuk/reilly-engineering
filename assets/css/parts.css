@@ -2,7 +2,7 @@
 .fcard h3 { font-weight: 600; font-size: 22px; margin-top: 16px; }
 .fcard .mono { font-size: 14px; margin-top: 6px; }
 .fcard .on { margin-top: 6px; color: var(--ink-soft); font-size: 15px; }
-.fcard:hover h3 { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .fcard:hover h3 { color: var(--re-blue); } }
 .fcard .ph-sq img { transition: transform 700ms var(--ease); }
-.fcard:hover .ph-sq img { transform: scale(1.03); }
+@media (hover: hover) and (pointer: fine) { .fcard:hover .ph-sq img { transform: scale(1.03); } }
 @media (max-width: 860px) { .fgrid { grid-template-columns: minmax(0, 1fr); } }

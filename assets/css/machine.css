@@ -10,7 +10,7 @@
 .mhero .price span { color: var(--ink-soft); }
 .mhero .tel { display: inline-block; margin-top: 10px; font-weight: 500; }
 .mhero .tel b { font-family: var(--mono); font-weight: 500; }
-.mhero .tel:hover { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .mhero .tel:hover { color: var(--re-blue); } }
 .swrow { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 22px; border-top: 1px solid var(--steel-3); border-bottom: 1px solid var(--steel-3); }
 .swrow p { margin: 0; color: var(--ink-soft); }
 #panel { position: relative; }
@@ -19,7 +19,7 @@
 .pane h2 { font-weight: 700; font-size: 30px; margin-bottom: 22px; }
 .make { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
 .make a span { display: block; margin-top: 10px; font-weight: 500; }
-.make a:hover span { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .make a:hover span { color: var(--re-blue); } }
 .make + .go { display: inline-block; margin-top: 20px; }
 .row.opt { grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr) auto; }
 .cheap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
@@ -38,14 +38,14 @@
 .brk { display: flex; justify-content: space-between; align-items: end; gap: 24px; }
 .brk p { margin: 0; color: var(--ink-soft); max-width: 40ch; }
 .brk a { font-family: var(--display); font-weight: 700; font-size: clamp(40px, 5vw, 72px); line-height: 1; font-variant-numeric: tabular-nums; }
-.brk a:hover { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .brk a:hover { color: var(--re-blue); } }
 .pn { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding-block: 44px 88px; border-top: 1px solid var(--steel-3); }
 .pn a { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 20px; align-items: center; }
 .pn a.next { grid-template-columns: minmax(0, 1fr) 120px; text-align: right; }
 .pn .ph-sq { width: 120px; }
 .pn span { color: var(--ink-soft); font-size: 14px; display: block; }
 .pn b { font-family: var(--display); font-weight: 600; font-size: 24px; }
-.pn a:hover b { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .pn a:hover b { color: var(--re-blue); } }
 @media (max-width: 860px) { .mhero, .cheap, .plans, .pn, .make { grid-template-columns: minmax(0, 1fr); } .row.sp, .row.opt { grid-template-columns: minmax(0, 1fr); } .swrow, .brk { flex-direction: column; align-items: flex-start; } }
 
 /* ---------- additions for the built site ---------- */

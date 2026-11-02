@@ -9,11 +9,11 @@
 .madeon b { font-family: var(--display); font-weight: 600; font-size: 22px; display: block; }
 .madeon span { color: var(--ink-soft); display: block; }
 .madeon .go { display: inline-block; margin-top: 10px; }
-.madeon a:hover .go { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .madeon a:hover .go { color: var(--re-blue); } }
 .send { display: flex; justify-content: space-between; align-items: end; gap: 32px; padding-block: 48px 88px; border-top: 1px solid var(--steel-3); }
 .send p { margin: 0; font-size: 22px; max-width: 30ch; line-height: 1.35; }
 .send a { font-family: var(--mono); font-size: 24px; font-weight: 500; }
-.send a:hover { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .send a:hover { color: var(--re-blue); } }
 @media (max-width: 860px) { .three, .vals, .madeon { grid-template-columns: minmax(0, 1fr); } .send { flex-direction: column; align-items: flex-start; } }
 .three em { display: block; margin-top: 4px; font-style: normal; font-size: 14px; line-height: 1.45; color: #4A535A; }
 .why-fam { margin: 0 0 28px; max-width: 62ch; padding: 14px 18px; border-left: 3px solid var(--re-blue); background: rgba(255,255,255,0.6); font-size: 15px; color: #4A535A; }

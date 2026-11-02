@@ -1,6 +1,6 @@
 .jump { display: flex; gap: 32px; padding-block: 0 24px; border-bottom: 1px solid var(--steel-3); }
 .jump a { font-weight: 500; }
-.jump a:hover { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .jump a:hover { color: var(--re-blue); } }
 .svc { display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); gap: 56px; align-items: start; padding-block: 64px; border-bottom: 1px solid var(--steel-3); scroll-margin-top: var(--hdr); }
 .svc.flip { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); }
 .svc.flip .media { order: 2; }
@@ -13,7 +13,7 @@
 .plans .mono { display: block; margin-top: 12px; }
 .svc .more { display: inline-block; margin-top: 28px; font-weight: 500; color: var(--re-blue); background: none; border: 0; padding: 0; font-size: 16px; cursor: pointer; }
 .big { font-family: var(--display); font-weight: 700; font-size: clamp(48px, 6vw, 88px); line-height: 1; font-variant-numeric: tabular-nums; display: inline-block; margin-top: 8px; }
-.big:hover { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .big:hover { color: var(--re-blue); } }
 .mtabs { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 18px; }
 .mtabs button { font: 500 14px var(--body); color: var(--ink-soft); background: none; border: 0; padding: 0; cursor: pointer; }
 .mtabs button.on { color: var(--re-blue); font-weight: 600; }

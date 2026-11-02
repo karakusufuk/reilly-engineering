@@ -1,5 +1,5 @@
-/* Reilly Engineering — shared behaviour: mobile menu, modal, entrance motion, switch, phone digits.
-   Header, footer, modal and page content are static HTML; this file only runs the interactions. */
+/* Reilly Engineering — shared behaviour: mobile menu, first-tap handling, demo actions, entrance motion, switch, phone digits.
+   Header, footer and page content are static HTML; this file only runs the interactions. */
 (function () {
   var root = document.documentElement;
   root.classList.add("js");
@@ -11,47 +11,40 @@
   function closeMenu() { if (hdr && hdr.classList.contains("open")) { hdr.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); } }
   if (mb) {
     mb.addEventListener("click", function () { mb.setAttribute("aria-expanded", hdr.classList.toggle("open") ? "true" : "false"); });
-    hdr.querySelectorAll(".nav.main a").forEach(function (a) { a.addEventListener("click", closeMenu); });
+    /* links that leave the page close the menu; the phone number does nothing (demo action), so the menu stays as it is */
+    hdr.querySelectorAll(".nav.main a:not([data-demo])").forEach(function (a) { a.addEventListener("click", closeMenu); });
     window.addEventListener("resize", function () { if (window.innerWidth > 860) closeMenu(); });
   }
 
-  /* ---------- modal ---------- */
-  var LINES = {
-    call: "In a live build, this would call Reilly's sales line in Swords.",
-    service: "In a live build, this would call the service desk, open seven days a week.",
-    mail: "In a live build, this would open an email to the sales team.",
-    map: "In a live build, this would open the showroom in Google Maps.",
-    order: "In a live build, this order would go straight into the parts desk's stock system.",
-    view: "In a live build, this would book a viewing of the machine in Swords.",
-    check: "In a live build, this would book an accuracy check with the service team."
-  };
-  var modal = document.getElementById("modal"), opener = null;
-  function openModal(k, from) {
-    opener = from || null;
-    document.getElementById("mp").textContent = LINES[k] || LINES.call;
-    modal.hidden = false;
-    document.getElementById("mc").focus();
-  }
-  function closeModal() {
-    if (modal.hidden) return;
-    modal.hidden = true;
-    if (opener && opener.focus) opener.focus();
-    opener = null;
-  }
+  /* ---------- touch: every button answers the first tap ----------
+     iOS drops the click of a tap that stops a page still gliding after a flick (the first tap then only lights the
+     hover colour, the second one works), and it can spend a first tap on hover. So a button is pressed on touchend,
+     and a link is helped the same way when the page was still moving; at rest a link is left to the browser. */
+  var lastScroll = -1e9, tap = null;
+  window.addEventListener("scroll", function () { lastScroll = performance.now(); }, { passive: true });
+  document.addEventListener("touchstart", function (e) {
+    var el = e.touches.length === 1 && e.target.closest ? e.target.closest("button, a[href]") : null;
+    if (!el || el.disabled) { tap = null; return; }
+    tap = { el: el, x: e.touches[0].clientX, y: e.touches[0].clientY, gliding: performance.now() - lastScroll < 150 };
+  }, { passive: true });
+  document.addEventListener("touchmove", function (e) {
+    if (tap && (Math.abs(e.touches[0].clientX - tap.x) > 10 || Math.abs(e.touches[0].clientY - tap.y) > 10)) tap = null;
+  }, { passive: true });
+  document.addEventListener("touchcancel", function () { tap = null; });
+  document.addEventListener("touchend", function (e) {
+    var t = tap; tap = null;
+    if (!t || e.touches.length || (t.el.tagName !== "BUTTON" && !t.gliding)) return;
+    e.preventDefault(); /* no synthetic hover and no second click from the browser */
+    t.el.click();
+  }, { passive: false });
+
+  /* ---------- demo actions: phone, email and map links do nothing (no message, never dials);
+     Order, Reserve a viewing and Book an accuracy check stay visible, faded and inactive (disabled in the markup) ---------- */
   document.addEventListener("click", function (e) {
-    var t = e.target.closest("[data-modal]");
-    if (t) { e.preventDefault(); openModal(t.getAttribute("data-modal"), t); return; }
-    if (e.target === modal || e.target.id === "mc") closeModal();
+    if (e.target.closest("[data-demo]")) e.preventDefault();
   });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") { closeModal(); closeMenu(); return; }
-    if (e.key === "Tab" && !modal.hidden) {
-      /* keep focus inside the dialog: its link and its Close button */
-      var f = modal.querySelectorAll("a[href], button");
-      var first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    }
+    if (e.key === "Escape") closeMenu();
   });
 
   /* ---------- entrance: one motion everywhere (short rise + fade) ---------- */

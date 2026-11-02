@@ -11,5 +11,5 @@
 .sell h2 { font-weight: 700; font-size: 34px; }
 .sell p { margin: 10px 0 0; color: var(--ink-soft); max-width: 46ch; }
 .sell a { font-family: var(--mono); font-size: 24px; font-weight: 500; }
-.sell a:hover { color: var(--re-blue); }
+@media (hover: hover) and (pointer: fine) { .sell a:hover { color: var(--re-blue); } }
 @media (max-width: 860px) { .feat { grid-template-columns: minmax(0, 1fr); } .row.u { grid-template-columns: minmax(0, 1fr); } .sell { flex-direction: column; align-items: flex-start; } }
